@@ -156,3 +156,5 @@ const usedCars = [
     },
   ];
   
+  module.exports = usedCars;
+  

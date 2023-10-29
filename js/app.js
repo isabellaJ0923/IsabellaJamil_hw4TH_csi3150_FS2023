@@ -1,4 +1,4 @@
-const usedCars = [
+const carList = [
   {
     year: 2018,
     make: "Toyota",
@@ -37,7 +37,7 @@ const usedCars = [
     price: 17000,
     color: "Blue",
     gasMileage: "27 mpg city, 36 mpg highway",
-    image: "images/altima,nissan.jpg",
+    image: "",
   },
   {
     year: 2015,
@@ -49,6 +49,7 @@ const usedCars = [
     gasMileage: "25 mpg city, 37 mpg highway",
     image: "images/malibu,chevrolet.jpg",
   },
+  // Additional entries:
   {
     year: 2016,
     make: "Volkswagen",
@@ -67,7 +68,7 @@ const usedCars = [
     price: 16000,
     color: "Silver",
     gasMileage: "30 mpg city, 41 mpg highway",
-    image: "images/elantra, hyundai.webp",
+    image: "images/elantra,hyundai.webp",
   },
   {
     year: 2014,
@@ -87,7 +88,7 @@ const usedCars = [
     price: 19000,
     color: "Blue",
     gasMileage: "24 mpg city, 31 mpg highway",
-    image: "images/cx5, mazda.webp",
+    image: "images/cx5,mazda.webp",
   },
   {
     year: 2018,
@@ -99,6 +100,7 @@ const usedCars = [
     gasMileage: "22 mpg city, 29 mpg highway",
     image: "images/sorrento,kia.webp",
   },
+  // Five more entries:
   {
     year: 2015,
     make: "Dodge",
@@ -137,7 +139,7 @@ const usedCars = [
     price: 55000,
     color: "Black",
     gasMileage: "Electric (370 miles per charge)",
-    image: "images/modelS,tesla.webp",
+    image: "images/modelS,Tesla.webp",
   },
   {
     year: 2020,
@@ -147,7 +149,7 @@ const usedCars = [
     price: 68000,
     color: "White",
     gasMileage: "20 mpg city, 26 mpg highway",
-    image: "images/cayenne,porsche.webp",
+    image: "images/cayenne,porche.webp",
   },
   {
     year: 2017,
@@ -157,7 +159,7 @@ const usedCars = [
     price: 26000,
     color: "White",
     gasMileage: "21 mpg city, 30 mpg highway",
-    image: "images/ES, lexus.jpg",
+    image: "images/ES,lexus.jpg",
   },
   {
     year: 2016,
@@ -168,16 +170,6 @@ const usedCars = [
     color: "Black",
     gasMileage: "23 mpg city, 34 mpg highway",
     image: "images/5,BMW.webp",
-  },
-  {
-    year: 2015,
-    make: "Audi",
-    model: "A3",
-    mileage: 18000,
-    price: 28000,
-    color: "Silver",
-    gasMileage: "24 mpg city, 34 mpg highway",
-    image: "images/a3,audi.avif",
   },
 ];
 
