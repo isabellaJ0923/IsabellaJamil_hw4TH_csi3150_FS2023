@@ -27,9 +27,8 @@ function filterAndDisplayCars() {
       });
   
       card.style.display = matchesFilters ? "block" : "none";
-    });
-  }
-  
+    };
+    
   // Function to reset filter inputs and display all cars
   function resetFilters() {
     resetFilter("year");
