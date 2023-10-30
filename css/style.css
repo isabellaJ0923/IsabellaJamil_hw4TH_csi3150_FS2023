@@ -1,77 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  --header-font-color: rgb(32, 225, 83);
-  --background-color-1: rgb(0, 163, 204);
-  --background-color-2: rgb(159, 36, 104);
+  background-color: rgba(9, 104, 144, 0.555);
 }
 
-header {
-  display: inline-flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 1rem;
-  text-align: center;
-}
-
-h1 {
-  color: var(--header-font-color);
-  background-color: var(--background-color-2);
-  /*contain background color around text only*/
-  display: inline;
-  padding: 1rem;
-  border-radius: 5px;
-}
-.search-btn {
-  background-color: var(--background-color-1);
-  color: var(--background-color-2);
-}
-
-.search-inputs {
-  display: inline-flex;
-  justify-content: space-between 5px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 1rem;
-  background-color: var(--background-color-2);
-  text-align: right;
-}
-
-.search-inputs h2 {
-  text-align: center;
-  color: var(--header-font-color);
-}
-
-.search-element {
-  margin: 1rem;
-}
-
-.outer-card-wrapper {
+nav {
   display: flex;
+  background-color: rgba(29, 195, 217, 0.521);
+  height: 100px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  padding: 15px;
 }
 
-/*style results list*/
-.vehicle-card {
-  /*keeps background color around text*/
-  display: table;
-  background-color: var(--background-color-2);
-  padding: 1rem;
-  margin: 1rem;
-  text-align: left;
+select {
+  background-color: rgba(13, 167, 198, 0.555);
+  border-radius: 10px;
 }
 
-.vehicle-card h3 {
-  color: var(--header-font-color);
+.allcars {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-/*Background covers device's screen and doesn't scroll*/
-@media screen {
-  body {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-  }
+.card {
+  flex: 0 0 25%;
+  margin-top: 10px;
+  margin-left: 60px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  min-height: 300px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(66, 93, 137, 0.521);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+}
+
+#none {
+  margin: 15px;
 }
