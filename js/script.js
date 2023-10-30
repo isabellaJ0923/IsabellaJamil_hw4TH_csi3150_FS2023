@@ -1,70 +1,52 @@
-// Function to filter and display cars based on user input
-function filterAndDisplayCars() {
-    const filters = {
-      year: getFilterValue("year"),
-      make: getFilterValue("make"),
-      mileage: parseFloat(getFilterValue("mileage")),
-      color: getFilterValue("color"),
-      price: parseFloat(getFilterValue("price")),
-    };
+document.querySelector("button").addEventListener("click", function () {
+    // Get filter values
+    var yearFilter = document.querySelector("[name='year']").value || "";
+    var makeFilter = document.querySelector("[name='make']").value || "";
+    var mileageFilter = document.querySelector("[name='mileage']").value || "";
+    var colorFilter = document.querySelector("[name='color']").value || "";
+    var priceFilter = document.querySelector("[name='price']").value || "";
   
-    const carCards = document.querySelectorAll(".product-card");
+    var carCards = document.querySelectorAll(".product-card");
   
-    carCards.forEach((card) => {
-      const cardData = {
-        year: getCardAttribute(card, "data-year"),
-        make: getCardAttribute(card, "data-make"),
-        mileage: parseFloat(getCardAttribute(card, "data-mileage")),
-        color: getCardAttribute(card, "data-color"),
-        price: parseFloat(getCardAttribute(card, "data-price")),
-      });
+    // Loop through each card and check if it matches the filters
+    carCards.forEach(function (card) {
+      var year = card.getAttribute("data-year");
+      var make = card.getAttribute("data-make");
+      var mileage = card.getAttribute("data-mileage");
+      var color = card.getAttribute("data-color");
+      var price = card.getAttribute("data-price");
   
-      const matchesFilters = Object.keys(filters).every((key) => {
-        const filterValue = filters[key];
-        const cardValue = cardData[key];
-  
-        return !filterValue || filterValue === cardValue;
-      });
-  
-      card.style.display = matchesFilters ? "block" : "none";
-    };
-    
-  // Function to reset filter inputs and display all cars
-  function resetFilters() {
-    resetFilter("year");
-    resetFilter("make");
-    resetFilter("mileage");
-    resetFilter("color");
-    resetFilter("price");
-    displayAllCars();
-  }
-  
-  // Helper function to get filter input values by name
-  function getFilterValue(inputName) {
-    return document.querySelector(`[name="${inputName}"]`).value || "";
-  }
-  
-  // Helper function to get card attributes by name
-  function getCardAttribute(card, attributeName) {
-    return card.getAttribute(attributeName);
-  }
-  
-  // Helper function to reset filter input by name
-  function resetFilter(inputName) {
-    document.querySelector(`[name="${inputName}"]`).value = "";
-  }
-  
-  // Function to display all cars
-  function displayAllCars() {
-    const carCards = document.querySelectorAll(".product-card");
-    carCards.forEach((card) => {
-      card.style.display = "block";
+      if (
+        (!yearFilter || year == yearFilter) &&
+        (!makeFilter || make == makeFilter) &&
+        (!mileageFilter || mileage <= mileageFilter) &&
+        (!colorFilter || color == colorFilter) &&
+        (!priceFilter || price <= priceFilter)
+      ) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
     });
+  });
+  function resetFilters() {
+    // Reset each filter dropdown to the first option
+    document.getElementById("year").selectedIndex = 0;
+    document.getElementById("make").selectedIndex = 0;
+    document.getElementById("mileage").selectedIndex = 0;
+    document.getElementById("color").selectedIndex = 0;
+    document.getElementById("price").selectedIndex = 0;
   }
   
-  // Event listener for the filter button
-  document.querySelector("button").addEventListener("click", filterAndDisplayCars);
-  
-  // Event listener for the reset button
-  document.querySelector(".reset-btn").addEventListener("click", resetFilters);
+  document.querySelector(".reset-btn").addEventListener("click", function () {
+    const formElements = document.querySelectorAll(".filter-form input");
+    formElements.forEach((element) => {
+      if (element.type !== "button") {
+        element.value = "";
+      }
+      
+    });
+    // Re-display all cars after reset
+    displayCars();
+  });
   

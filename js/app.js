@@ -7,7 +7,7 @@ const carList = [
     price: 18000,
     color: "Silver",
     gasMileage: "25 mpg city, 35 mpg highway",
-    image: "silver_toyota_camry.jpg",
+    image: "images/silver_toyota_camry.jpg",
   },
   {
     year: 2016,
@@ -17,7 +17,7 @@ const carList = [
     price: 14000,
     color: "White",
     gasMileage: "30 mpg city, 40 mpg highway",
-    image: "white_honda_civic.jpg",
+    image: "images/white_honda_civic.jpg",
   },
   {
     year: 2017,
@@ -27,7 +27,7 @@ const carList = [
     price: 16000,
     color: "Black",
     gasMileage: "28 mpg city, 38 mpg highway",
-    image: "black_ford_fusion.jpg",
+    image: "images/black_ford_fusion.jpg",
   },
   {
     year: 2019,
@@ -172,46 +172,123 @@ const carList = [
     image: "black_5series_bmw.jpg",
   },
 ];
-// Define a function to filter and display cars
-function filterAndDisplayCars() {
-  const filters = {
-    year: document.getElementById("year").value,
-    make: document.getElementById("make").value,
-    mileage: document.getElementById("mileage").value,
-    color: document.getElementById("color").value,
-    price: document.getElementById("price").value,
-  };
+function searchCar() {
+  const year = document.querySelector('[name="year"]').value;
+  const make = document.querySelector('[name="make"]').value;
+  const mileage = document.querySelector('[name="mileage"]').value;
+  const color = document.querySelector('[name="color"]').value;
+  const price = document.querySelector('[name="price"]').value;
 
-  const carCards = document.querySelectorAll(".product-card");
+  const cars = document.querySelectorAll(".product-card");
+  cars.forEach((car) => {
+    if (
+      (year === "" || car.getAttribute("data-year") === year) &&
+      (make === "" || car.getAttribute("data-make") === make) &&
+      (mileage === "" || car.getAttribute("data-mileage") === mileage) &&
+      (color === "" || car.getAttribute("data-color") === color) &&
+      (price === "" || car.getAttribute("data-price") === price)
+    ) {
+      car.style.display = "block";
+    } else {
+      car.style.display = "none";
+    }
+  });
+}
+
+function filterCars() {
+  const year = document.getElementById("year").value;
+  const make = document.getElementById("make").value;
+  const mileage = document.getElementById("mileage").value;
+  const color = document.getElementById("color").value;
+  const price = document.getElementById("price").value;
+
+  const cards = document.querySelectorAll(".product-card");
+
   let carsFound = false;
 
-  carCards.forEach((carCard) => {
-    const carData = {
-      year: carCard.getAttribute("data-year"),
-      make: carCard.getAttribute("data-make"),
-      mileage: carCard.getAttribute("data-mileage"),
-      color: carCard.getAttribute("data-color"),
-      price: carCard.getAttribute("data-price"),
-    };
+  cards.forEach((card) => {
+    const cardYear = card.getAttribute("data-year");
+    const cardMake = card.getAttribute("data-make");
+    const cardMileage = card.getAttribute("data-mileage");
+    const cardColor = card.getAttribute("data-color");
+    const cardPrice = card.getAttribute("data-price");
 
-    const shouldDisplayCar =
-      Object.keys(filters).every((key) =>
-        filters[key] === "" || filters[key] === carData[key]
-      );
-
-    carCard.style.display = shouldDisplayCar ? "block" : "none";
-
-    if (shouldDisplayCar) {
+    if (
+      (year === "" || year === cardYear) &&
+      (make === "" || make === cardMake) &&
+      (mileage === "" || mileage === cardMileage) &&
+      (color === "" || color === cardColor) &&
+      (price === "" || price === cardPrice)
+    ) {
+      card.style.display = "block";
       carsFound = true;
+    } else {
+      card.style.display = "none";
     }
   });
 
+  // Check if no cars met the criteria
   if (!carsFound) {
     alert("No cars found matching your criteria. Please try again.");
   }
 }
 
-// Render cars when the page loads
+function displayCars() {
+  const carList = document.querySelector(".car-list");
+
+  // Clear out any existing cars
+  carList.innerHTML = "";
+
+  cars.forEach((car) => {
+    const carCard = document.createElement("div");
+    carCard.classList.add("product-card");
+    carCard.setAttribute("data-year", car.year);
+    carCard.setAttribute("data-make", car.make);
+    carCard.setAttribute("data-mileage", car.mileage);
+    carCard.setAttribute("data-color", car.color);
+    carCard.setAttribute("data-price", car.price);
+
+    const carContent = `
+            <h2>${car.make} ${car.model}</h2>
+            <img src="${car.image}" alt="${car.make} ${car.model} Image">
+            <p>Year: ${car.year}</p>
+            <p>Mileage: ${car.mileage}</p>
+            <p>Price: $${car.price}</p>
+            <p>Color: ${car.color}</p>
+            <p>Gas Mileage: ${car.gasMileage}</p>
+        `;
+
+    carCard.innerHTML = carContent;
+    carList.appendChild(carCard);
+  });
+}
+
+// Initially display all cars when the page loads
+displayCars();
+
+function populateDropdowns() {
+  const years = [...new Set(cars.map((car) => car.year))];
+  const makes = [...new Set(cars.map((car) => car.make))];
+  const mileages = [...new Set(cars.map((car) => car.mileage))];
+  const colors = [...new Set(cars.map((car) => car.color))];
+  const prices = [...new Set(cars.map((car) => car.price))];
+
+  populateDropdown("year", years);
+  populateDropdown("make", makes);
+  populateDropdown("mileage", mileages);
+  populateDropdown("color", colors);
+  populateDropdown("price", prices);
+}
+
+function populateDropdown(dropdownId, values) {
+  const dropdown = document.getElementById(dropdownId);
+  values.forEach((value) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.innerText = value;
+    dropdown.appendChild(option);
+  });
+}
 function renderCars() {
   const carList = document.querySelector(".car-list");
   carList.innerHTML = ""; // Clear any existing car cards
@@ -226,7 +303,7 @@ function renderCars() {
     carCard.setAttribute("data-price", car.price);
 
     carCard.innerHTML = `
-        <img src="${car.image}" alt="${car.model}" />
+    <img src="${car.image}" alt="${car.make} ${car.model} Image">
         <h2>${car.make} ${car.model}</h2>
         <p>Year: ${car.year}</p>
         <p>Color: ${car.color}</p>
@@ -239,29 +316,10 @@ function renderCars() {
   });
 }
 
-// Populate dropdowns with unique values
-function populateDropdowns() {
-  const attributes = ["year", "make", "mileage", "color", "price"];
+// Render the cars when the page loads
+document.addEventListener("DOMContentLoaded", renderCars);
 
-  attributes.forEach((attribute) => {
-    const values = [...new Set(cars.map((car) => car[attribute]))];
-    const dropdown = document.getElementById(attribute);
-
-    dropdown.innerHTML = ""; // Clear existing options
-
-    values.forEach((value) => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.innerText = value;
-      dropdown.appendChild(option);
-    });
-  });
-}
-
-// Add event listeners
-document.addEventListener("DOMContentLoaded", () => {
-  renderCars();
+window.onload = function () {
+  displayCars();
   populateDropdowns();
-});
-
-document.getElementById("filter-button").addEventListener("click", filterAndDisplayCars);
+};
