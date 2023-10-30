@@ -3,126 +3,192 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Used Cars</title>
     <link rel="stylesheet" href="../css/style.css" />
-
-    <title>Used Car Inventory</title>
+    <script src="../js/app.js" defer></script>
   </head>
-
   <body>
-    <header>
-      <div class="header-content">
-        <img src="../images/used cars.jpeg" alt="Description of the image" />
-        <h1>Isabella's Used Car Inventory</h1>
-        <br />
-        <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Search..." />
-          <button id="searchButton">Search</button>
+    <div class="filter">
+      <nav>
+        <div class="logo"><h1>Isabella's Used cars</h1></div>
+
+        <form id="filters">
+          <label for="price">Max Price:</label>
+          <select id="price">
+            <option value="Price">Price</option>
+            <option value="12000">$12000</option>
+            <option value="14000">$14000</option>
+            <option value="15000">$15000</option>
+            <option value="16000">$16000</option>
+            <option value="17000">$17000</option>
+            <option value="18000">$18000</option>
+          </select>
+
+          <label for="make">Make:</label>
+          <select id="make">
+            <option value="Makes">Makes</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Ford">Ford</option>
+            <option value="Honda">Honda</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Volkswagen">Volkswagen</option>
+          </select>
+
+          <label for="mileage">Max Mileage:</label>
+          <select id="mileage">
+            <option value="mileage">Mileage</option>
+            <option value="25000">25000</option>
+            <option value="30000">30000</option>
+            <option value="35000">35000</option>
+            <option value="40000">40000</option>
+            <option value="45000">45000</option>
+            <option value="50000">50000</option>
+          </select>
+
+          <label for="color">Color:</label>
+          <select id="colors">
+            <option value="Colors">Colors</option>
+            <option value="Silver">Silver</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
+            <option value="Grey">Grey</option>
+          </select>
+        </form>
+      </nav>
+    </div>
+    <div class="allcars">
+      <div
+        class="card"
+        id="camry"
+        data-make="Toyota"
+        data-price="18000"
+        data-mileage="30000"
+        data-color="Silver"
+      >
+        <div>
+          <img src="../images/silver_toyota_camry.jpg" alt="Toyato Camry" />
         </div>
+        <article>
+          <h1>Toyato Camry</h1>
+          <p>Price: $18000</p>
+          <p>Year: 2018</p>
+          <p>Color: Silver</p>
+          <p>Mileage: 30000</p>
+          <p>Gas Mileage: 25 mpg city, 35 mpg highway</p>
+        </article>
       </div>
-    </header>
-    <main>
-      <section class="filters">
-        <label for="yearFilter">Year:</label>
-        <select id="yearFilter">
-          <option value="-select-">-select-</option>
-          <option value="2014">2014</option>
-          <option value="2015">2015</option>
-          <option value="2016">2016</option>
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-        </select>
-        <br />
-        <br />
+    
+      <div
+        class="card"
+        id="civic"
+        data-make="Honda"
+        data-price="14000"
+        data-mileage="45000"
+        data-color="White"
+      >
+        <div>
+          <img src="../images/white_honda_civic.jpg" alt="Toyato Camry" />
+        </div>
+        <article>
+          <h1>Honda Civic</h1>
+          <p>Price: $14000</p>
+          <p>Year: 2016</p>
+          <p>Color: White</p>
+          <p>Mileage: 45000</p>
+          <p>Gas Mileage: 30 mpg city, 40 mpg highway</p>
+        </article>
+      </div>
 
-        <label for="makeFilter">Make:</label>
-        <select id="makeFilter">
-          <option value="-select-">-select-</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Honda">Honda</option>
-          <option value="Ford">Ford</option>
-          <option value="Nissan">Nissan</option>
-          <option value="Chevrolet">Chevrolet</option>
-          <option value="Volkswagen">Volkswagen</option>
-          <option value="Hyundai">Hyundai</option>
-          <option value="Subaru">Subaru</option>
-          <option value="Mazda">Mazda</option>
-          <option value="Kia">Kia</option>
-          <option value="Dodge">Dodge</option>
-          <option value="Cadillac">Cadillac</option>
-          <option value="Jaguar">Jaguar</option>
-          <option value="Tesla">Tesla</option>
-          <option value="Dodge">Dodge</option>
-          <option value="Porsche">Porsche</option>
-          <option value="Lexus">Lexus</option>
-          <option value="BMW">BMW</option>
-          <option value="Audi">Audi</option>
-        </select>
-        <br />
-        <br />
+      <div
+        class="card"
+        id="fusion"
+        data-make="Ford"
+        data-price="16000"
+        data-mileage="35000"
+        data-color="Black"
+      >
+        <div>
+          <img src="../images/black_ford_fusion.jpg" alt="Ford Fusion" />
+        </div>
+        <article>
+          <h1>Ford Fusion</h1>
+          <p>Price: $16000</p>
+          <p>Year: 2017</p>
+          <p>Color: Black</p>
+          <p>Mileage: 35000</p>
+          <p>Gas Mileage: 28 mpg city, 38 mpg highway</p>
+        </article>
+      </div>
 
-        <label for="mileageFilter">Mileage:</label>
-        <select id="mileageFilter">
-          <option value="-select-">-select-</option>
-          <option value="18000">18,000</option>
-          <option value="22000">22,000</option>
-          <option value="26000">26,000</option>
-          <option value="28000">28,000</option>
-          <option value="29000">29,000</option>
-          <option value="30000">30,000</option>
-          <option value="32000">32,000</option>
-          <option value="35000">35,000</option>
-          <option value="40000">40,000</option>
-          <option value="45000">45,000</option>
-          <option value="50000">50,000</option>
-          <option value="60000">60,000</option>
-        </select>
-        <br />
-        <br />
-        <label for="colorFilter">Color:</label>
-        <select id="colorFilter">
-          <option value="-select-">-select-</option>
-          <option value="Silver">Silver</option>
-          <option value="White">White</option>
-          <option value="Black">Black</option>
-          <option value="Blue">Blue</option>
-          <option value="Red">Red</option>
-          <option value="Gray">Gray</option>
-          <option value="Green">Green</option>
-        </select>
-        <br />
-        <br />
+      <div
+        class="card"
+        id="altima"
+        data-make="Nissan"
+        data-price="17000"
+        data-mileage="25000"
+        data-color="Blue"
+      >
+        <div>
+          <img src="../images/blue_altima_nissan.png" alt="Nissan Altima" />
+        </div>
+        <article>
+          <h1>Nissan Altima</h1>
+          <p>Price: $17000</p>
+          <p>Year: 2019</p>
+          <p>Color: Blue</p>
+          <p>Mileage: 25000</p>
+          <p>Gas Mileage: 27 mpg city, 36 mpg highway</p>
+        </article>
+      </div>
 
-        <label for="priceFilter">Price:</label>
-        <select id="priceFilter">
-          <option value="-select-">-select-</option>
-          <option value="12000">$12,000</option>
-          <option value="14000">$14,000</option>
-          <option value="15000">$15,000</option>
-          <option value="16000">$16,000</option>
-          <option value="17000">$17,000</option>
-          <option value="18000">$18,000</option>
-          <option value="19000">$19,000</option>
-          <option value="24000">$24,000</option>
-          <option value="26000">$26,000</option>
-          <option value="27000">$27,000</option>
-          <option value="28000">$27,000</option>
-          <option value="32000">$32,000</option>
-          <option value="38000">$38,000</option>
-          <option value="55000">$55,000</option>
-          <option value="68000">$68,000</option>
-        </select>
-      </section>
-      <br />
-      <button onclick="filterCars()">Search</button>
-      <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+      <div
+        class="card"
+        id="malibu"
+        data-make="Chevrolet"
+        data-price="12000"
+        data-mileage="50000"
+        data-color="Red"
+      >
+        <div>
+          <img src="../images/red_chevy_malibu.jpg" alt="Chevrolet Malibu" />
+        </div>
+        <article>
+          <h1>Chevrolet Malibu</h1>
+          <p>Price: $12000</p>
+          <p>Year: 2015</p>
+          <p>Color: Red</p>
+          <p>Mileage: 50000</p>
+          <p>Gas Mileage: 25 mpg city, 37 mpg highway</p>
+        </article>
+      </div>
+
+      <div
+        class="card"
+        id="passat"
+        data-make="Volkswagen"
+        data-price="15000"
+        data-mileage="40000"
+        data-color="Grey"
+      >
+        <div>
+          <img src="../images/gray_passat_volkswagen.jpg" alt="Volkswagen Passat" />
+        </div>
+        <article>
+          <h1>Volkswagen Passat</h1>
+          <p>Price: $15000</p>
+          <p>Year: 2016</p>
+          <p>Color: Grey</p>
+          <p>Mileage: 40000</p>
+          <p>Gas Mileage: 29 mpg city, 40 mpg highway</p>
+        </article>
+      </div>
+
+      <div id="none">
+        <h1>No cars availabe, please try again</h1>
+      </div>
     </div>
-      <section class="car-listings">
-        <div id="carListings" class="car-grid"></div>
-      </section>
-    </div>
-    <script src="../js/app.js"></script>
-    <script src="../js/script.js"></script>
   </body>
 </html>
